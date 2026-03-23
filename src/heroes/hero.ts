@@ -79,10 +79,10 @@ export abstract class Hero {
         this.maxHealth = maxHealth
         this.xp = xp
         this.levelXp = stats.easyMode
-            ? ~~(INIT_LEVEL_XP * EASY_MODE_FACTOR)
+            ? ~~(INIT_LEVEL_XP * EASY_MODE_FACTOR / 10) * 10
             : levelXp
         this.levelXpInc = stats.easyMode
-            ? ~~(LEVEL_XP_CAP_INC * EASY_MODE_FACTOR)
+            ? ~~(LEVEL_XP_CAP_INC * EASY_MODE_FACTOR / 10) * 10
             : LEVEL_XP_CAP_INC
         this.speed = speed
         this.lightRadius = lightRadius

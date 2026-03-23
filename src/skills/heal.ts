@@ -12,7 +12,7 @@ interface HealOwner {
 export class Heal implements Skill {
     constructor(
         private owner: HealOwner,
-        private healAmount: number = 10,
+        private healAmount: number = 40,
     ) {
         this.owner = owner
         this.healAmount = healAmount
