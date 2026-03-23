@@ -11,6 +11,7 @@ import { Magnet } from "../skills/magnet"
 import { MovementSpeed } from "../skills/movement-speed"
 import { MaxHealth } from "../skills/max-health"
 import { Heal } from "../skills/heal"
+import { stats } from "../stat"
 
 export class Hero1 extends Hero {
     healSkill: Skill
@@ -23,7 +24,7 @@ export class Hero1 extends Hero {
         }
         super("hero1", frames)
 
-        this.healSkill = new Heal(this)
+        this.healSkill = new Heal(this, stats.easyMode ? 40 : 10)
         const blaster = new Blaster(this, true)
         blaster.upgradeFireRate()
 
