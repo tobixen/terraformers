@@ -10,7 +10,7 @@ export class MovementSpeed implements Skill {
     constructor(
         private owner: SpeedOwner,
         private incSpeed = 0.01,
-        private maxSpeed = 0.08,
+        private maxSpeed = 0.1,
     ) {
         this.owner = owner
         this.incSpeed = incSpeed

@@ -4,7 +4,7 @@ import { Skill } from "./skill"
 import { stats } from "../stat"
 
 const INC_HEALTH_CAP = 25
-const MAX_HEALTH_CAP = 200
+const MAX_HEALTH_CAP = 300
 
 interface MaxHealthOwner {
     health: number
