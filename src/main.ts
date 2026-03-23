@@ -24,12 +24,13 @@ const processInput = initInput(canvas, WIDTH, HEIGHT)
     loadSounds()
 
     await window.highscores.init({
-        getAnnouncement: (name: string, result: Highscore) => {
+        getAnnouncement: (name: string, result: Highscore, scoreboard?: string) => {
             const zeroPad = (numb: number) => (numb < 10 ? "0" + numb : numb)
             const abstime = ~~result.time
             const mins = zeroPad(~~(abstime / 60))
             const secs = zeroPad(abstime % 60)
-            return `${name} scored ${result.score} in ${mins}:${secs}`
+            const mode = scoreboard === "easy" ? " (easy)" : ""
+            return `${name} scored ${result.score} in ${mins}:${secs}${mode}`
         },
         compareScores: (score1: Highscore, score2: Highscore) =>
             score1.score - score2.score,

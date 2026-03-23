@@ -85,7 +85,11 @@ export const prepareDeathScene = () => {
     unloadCam()
     stopTheme()
     obsEmit(Observable.scene, scene)
-    window.highscores.setScore({ score: stats.score, time: stats.time })
+    window.highscores.setScore(
+        { score: stats.score, time: stats.time },
+        false,
+        stats.easyMode ? "easy" : "normal",
+    )
 }
 
 export const resumeGame = () => {
