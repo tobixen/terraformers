@@ -105,6 +105,15 @@ const startBtn = btn(
     BTN_SIZE,
     startGame,
 )
+const easyModeBtn = btn(
+    ~~(WIDTH / 3) + 16,
+    ~~(HEIGHT / 3) * 2 + BTN_SIZE + 4,
+    MENU_FONT_SIZE * 4 * 9,
+    BTN_SIZE,
+    () => {
+        stats.easyMode = !stats.easyMode
+    },
+)
 const upgrade1btn = btn(
     ~~(WIDTH / 7) * 1,
     ~~(HEIGHT / 2) - 10,
@@ -136,6 +145,7 @@ export const updateUI = (dt: number) => {
             break
         case Scene.title:
             startBtn.update()
+            easyModeBtn.update()
             break
         case Scene.powerup:
             upgrade1btn.update()
@@ -260,6 +270,13 @@ export const renderUI = (ctx: CTX, assets: Assets) => {
                     startBtn.y + 10,
                 )
             }
+            renderFont(
+                ctx,
+                "EASY: " + (stats.easyMode ? "ON " : "OFF"),
+                MENU_FONT_SIZE,
+                easyModeBtn.x + 10,
+                easyModeBtn.y + 10,
+            )
             break
 
         case Scene.powerup:

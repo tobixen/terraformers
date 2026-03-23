@@ -31,6 +31,7 @@ const INIT_PICKUP_RADIUS = 15
 const INIT_LIGHT_RADIUS = 50
 const INIT_LEVEL_XP = 50
 const LEVEL_XP_CAP_INC = 70
+const EASY_MODE_FACTOR = 0.5
 
 const COLLISION_BOX_SIZE = 8
 const COLLISION_RADIUS = COLLISION_BOX_SIZE / 2
@@ -61,6 +62,7 @@ export abstract class Hero {
     skills = [] as Skill[]
     unloadPhysics = () => {}
     unloadRender = () => {}
+    levelXpInc = LEVEL_XP_CAP_INC
 
     constructor(
         private sprite: keyof Assets,
@@ -76,7 +78,12 @@ export abstract class Hero {
         this.health = health
         this.maxHealth = maxHealth
         this.xp = xp
-        this.levelXp = levelXp
+        this.levelXp = stats.easyMode
+            ? ~~(INIT_LEVEL_XP * EASY_MODE_FACTOR)
+            : levelXp
+        this.levelXpInc = stats.easyMode
+            ? ~~(LEVEL_XP_CAP_INC * EASY_MODE_FACTOR)
+            : LEVEL_XP_CAP_INC
         this.speed = speed
         this.lightRadius = lightRadius
         this.pickupRadius = pickupRadius
@@ -89,7 +96,7 @@ export abstract class Hero {
         this.xp += xp
         if (this.xp >= this.levelXp) {
             this.xp -= this.levelXp
-            this.levelXp += LEVEL_XP_CAP_INC
+            this.levelXp += this.levelXpInc
             powerupMenu()
             playPowerup()
         }

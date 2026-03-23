@@ -7,6 +7,7 @@ import { Hero1 } from "./heroes/hero1"
 
 class Stats {
     won = false
+    easyMode = false
     score = 0
     /** Time passed since game session start, in seconds */
     time = 0
